@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
+from .models import Post
 
 
 def index(request):
@@ -7,8 +8,19 @@ def index(request):
 
 
 def post_list(request):
-    return HttpResponse("post list")
+    posts = Post.published.all()
+    context = {
+        {'posts': posts},
+    }
+    return render(request, "", context)
 
 
 def post_detail(request, id):
-    return HttpResponse("post_detail:", id)
+    try:
+        post = Post.published.get(id=id)
+    except:
+        raise Http404(f"post:{id}")
+    context = {
+        {'posts': post},
+    }
+    return render(request, "", context)
