@@ -10,9 +10,9 @@ def index(request):
 def post_list(request):
     posts = Post.published.all()
     context = {
-        {'posts': posts},
+        'posts': posts,
     }
-    return render(request, "", context)
+    return render(request, "blog/list.html", context)
 
 
 def post_detail(request, id):
@@ -21,6 +21,6 @@ def post_detail(request, id):
     except:
         raise Http404(f"post:{id}")
     context = {
-        {'posts': post},
+        'posts': post,
     }
-    return render(request, "", context)
+    return render(request, "blog/detail.html", context)
