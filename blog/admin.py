@@ -1,6 +1,9 @@
 from django.contrib import admin
 from .models import *
 
+admin.sites.AdminSite.site_header = "پنل مدیریت جنگو"
+admin.sites.AdminSite.site_title = "پنل "
+admin.sites.AdminSite.index_title = "پنل مدیریت "
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
