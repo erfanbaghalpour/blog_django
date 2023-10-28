@@ -8,4 +8,5 @@ urlpatterns = [
     path('posts/', views.PostLisView.as_view(), name="post_list"),
     # path('posts/<int:id>', views.post_detail, name="post_detail"),
     path('posts/<int:pk>', views.PostDetailView.as_view(), name="post_detail"),
+    path('ticket', views.ticket, name="post_detail"),
 ]

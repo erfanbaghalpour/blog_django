@@ -16,3 +16,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title', 'description']
     date_hierarchy = 'publish'
     prepopulated_fields = {"slug": ['title']}
+
+@admin.register(Ticket)
+class TicketAdmin(admin.ModelAdmin):
+    list_display = ['name', 'subject', 'phone']
