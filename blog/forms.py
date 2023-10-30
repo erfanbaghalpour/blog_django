@@ -1,4 +1,5 @@
 from django import forms
+from .models import Comment
 
 
 class TicketForm(forms.Form):
@@ -21,3 +22,8 @@ class TicketForm(forms.Form):
             else:
                 return phone
 
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['name', 'message']
