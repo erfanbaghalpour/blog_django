@@ -6,4 +6,26 @@
     <h3>{{ posts.description | linebreaks }}</h3>
     <hr/>
     <p>{{ posts.publish }}</p>
+    <hr>
+    {% with comments.count as cm_count %}
+        <div>
+            {#    give all comments #}
+            {{ cm_count }} comment{{ cm_count|pluralize }}
+        </div>
+
+        <div>
+            {% for cm in comments %}
+                {{ cm.message|linebreaks }}
+                <br>
+                {{ cm.name }}
+            {% empty %}
+                کامنتی وجود ندارد
+            {% endfor %}
+        </div>
+    {% endwith %}
+    <form action="{% url 'blog:post_comment' posts.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="افزودن کامنت">
+    </form>
 {% endblock %}

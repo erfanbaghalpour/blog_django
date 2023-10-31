@@ -34,13 +34,18 @@ class PostLisView(ListView):
     template_name = 'blog/list.html'
 
 
-def post_detail(request, id):
-    try:
-        post = Post.published.get(id=id)
-    except:
-        raise Http404(f"post:{id}")
+def post_detail(request, pk):
+    # try:
+    #     post = Post.published.get(id=id)
+    # except:
+    #     raise Http404(f"post:{id}")
+    post = get_object_or_404(Post, id=pk, status=Post.Status.PUBLISHED)
+    comments = post.comments.filter(active=True)
+    form = CommentForm()
     context = {
         'posts': post,
+        'form': form,
+        'comments': comments,
     }
     return render(request, "blog/detail.html", context)
 
@@ -72,7 +77,7 @@ def ticket(request):
 
 @require_POST
 def post_comment(request, post_id):
-    post = get_object_or_404(request, id=post_id, status=Post.Status.PUBLISHED)
+    post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
     comment = None
     form = CommentForm(data=request.POST)
     if form.is_valid():
