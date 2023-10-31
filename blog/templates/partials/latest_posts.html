@@ -1,0 +1,7 @@
+<div>
+    <h2>آخرین پست ها</h2>
+    {% for post in l_posts %}
+        <p><a href="{{ post.getget_absolute_url }}">{{ post.title }}</a></p>
+    {% endfor %}
+
+</div>
