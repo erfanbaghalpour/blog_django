@@ -108,3 +108,7 @@ h3::before {
     width: 400px;
     margin: 0 auto;
 }
+
+.name_form {
+    border-radius: 30%;
+}
