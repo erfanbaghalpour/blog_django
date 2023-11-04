@@ -1,9 +1,10 @@
 {% extends 'parent/base.html' %}
+{% load blog_tags %}
 {% block title %}post detail{% endblock %}
 {% block content %}
     <h1>Post detail</h1>
     <h2>{{ posts.title }} by {{ posts.author }}</h2>
-    <h3>{{ posts.description | linebreaks }}</h3>
+    <h3>{{ posts.description | markdown }}</h3>
     <hr/>
     <p>{{ posts.publish }}</p>
     <hr>
