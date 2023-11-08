@@ -40,3 +40,7 @@ class CommentForm(forms.ModelForm):
         widgets = {
             'message': forms.TextInput(attrs={'placeholder': 'متن'})
         }
+
+
+class SearchForm(forms.Form):
+    query = forms.CharField( )

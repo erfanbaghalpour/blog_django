@@ -10,4 +10,5 @@ urlpatterns = [
     path('posts/<int:pk>', views.post_detail, name="post_detail"),
     path('posts/<int:post_id>/comment', views.post_comment, name="post_comment"),
     path('ticket', views.ticket, name="post_detail"),
+    path('search/', views.post_search, name="post_search"),
 ]
