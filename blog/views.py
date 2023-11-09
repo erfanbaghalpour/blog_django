@@ -5,6 +5,7 @@ from .forms import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView, DetailView
 from django.views.decorators.http import require_POST
+from django.db.models import Q
 
 
 def index(request):
@@ -99,7 +100,7 @@ def post_search(request):
         form = SearchForm(data=request.GET)
         if form.is_valid():
             query = form.cleaned_data['query']
-            results = Post.published.filter(description__icontains=query)
+            results = Post.published.filter(Q(description__icontains=query) | Q(title__icontains=query))
     context = {
         'query': query,
         'results': results
