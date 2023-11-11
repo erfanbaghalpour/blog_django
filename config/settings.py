@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_jalali',
+    'django.contrib.postgres',
 
     # my apps
     'blog.apps.BlogConfig',
