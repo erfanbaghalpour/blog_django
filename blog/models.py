@@ -101,5 +101,5 @@ class Image(models.Model):
         verbose_name = "تصویر"
         verbose_name_plural = "تصاویر"
 
-    # def __str__(self):
-    #     return self.title
+    def __str__(self):
+        return self.title if self.title else 'None'
