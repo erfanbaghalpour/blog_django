@@ -121,3 +121,23 @@ def profile(request):
         'posts': posts
     }
     return render(request, 'blog/profile.html', context)
+
+
+def creat_post(request):
+    if request.method == "POST":
+        form = CreatePostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            img1 = Image.objects.create(image_file=form.cleaned_data['image1'], post=post)
+            post.images.add(img1)
+            img2 = Image.objects.create(image_file=form.cleaned_data['image2'], post=post)
+            post.images.add(img2)
+            return redirect('blog:profile')
+    else:
+        form = CreatePostForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'forms/create_post.html', context=context)

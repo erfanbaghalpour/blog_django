@@ -12,4 +12,5 @@ urlpatterns = [
     path('ticket', views.ticket, name="post_detail"),
     path('search/', views.post_search, name="post_search"),
     path('profile/', views.profile, name="profile"),
+    path('profile/create-post', views.creat_post, name="creat_post"),
 ]
