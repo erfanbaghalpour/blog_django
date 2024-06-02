@@ -13,5 +13,7 @@ urlpatterns = [
     path('search/', views.post_search, name="post_search"),
     path('profile/', views.profile, name="profile"),
     path('profile/create-post', views.creat_post, name="creat_post"),
+    path('profile/create-post/<int:post_id>', views.edit_post, name="edit_post"),
     path('profile/delete-post/<int:post_id>', views.delete_post, name="delete_post"),
+    path('profile/delete-image/<int:image_id>', views.delete_image, name="delete_image"),
 ]
