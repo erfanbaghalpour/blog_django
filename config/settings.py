@@ -29,6 +29,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # my apps
+    'blog.apps.BlogConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,8 +41,6 @@ INSTALLED_APPS = [
     'django_jalali',
     'django.contrib.postgres',
 
-    # my apps
-    'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # DJANGORESIZED_DEFAULT_FORCE_FORMAT = 'JPEG'
 # DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'JPEG': ".jpg"}
 DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION = False
+
+LOGIN_REDIRECT_URL = '/blog/profile/'
+LOGIN_URL = '/blog/login/'
+LOGOUT_URL = '/blog/logout/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
